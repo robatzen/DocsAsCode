@@ -1,6 +1,11 @@
 #!/usr/bin/env python
+# https://developers.redhat.com/blog/2017/06/21/documentation-as-code/
 # Example of Documentation as Code
+
 import optparse
+
+import datetime as dt
+import pandas as pd
 
 def main():
     parser = optparse.OptionParser(usage='Usage: %prog -o [run|doc]')
@@ -17,11 +22,13 @@ def main():
         parser.print_help()
         exit(-1)
 
-    if opts.runordoc == "Run" or opts.runordoc == "run" or opts.runordoc =="RUN":
+    if opts.runordoc == "Run" or opts.runordoc == "run" or opts.runordoc == "RUN":
         print "Here goes the code to run"
         exit(0)
 
-    elif opts.runordoc == "Doc" or opts.runordoc == "doc" or opts.runordoc =="DOC":
+    elif opts.runordoc == "Doc" or opts.runordoc == "doc" or opts.runordoc == "DOC":
+        mdFile = open("documentation.md","w")
+
         DACv1 = """## Documentation Starts
 
 Here you can add all the needed markdown documentation. You can split it as shown in this script.
@@ -32,12 +39,17 @@ Here you can add all the needed markdown documentation. You can split it as show
 
 Here goes the documentation example with a table:
 
- 1 | 2 | 3 | 4 | 5
----|---|---|---
- T | H | I | S |
- I | S |   | A |
- T | A | B | L | E
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+ 
 """
+
+        mdFile.write(DACv1);
+        mdFile.write(DACv2.strip());
+        mdFile.close();
 
         print DACv1
         print DACv2.strip()
