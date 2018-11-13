@@ -22,9 +22,11 @@ def main():
         parser.print_help()
         exit(-1)
 
+
     if opts.runordoc == "Run" or opts.runordoc == "run" or opts.runordoc == "RUN":
         print "Here goes the code to run"
         exit(0)
+
 
     elif opts.runordoc == "Doc" or opts.runordoc == "doc" or opts.runordoc == "DOC":
         mdFile = open("documentation.md","w")
